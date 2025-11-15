@@ -1,5 +1,6 @@
 import express from 'express'
 import morgan from 'morgan'
+import './database/index.js'
 import { Env } from './shared/config/env.js'
 import { corsMiddleware } from './shared/middleware/cors.middleware.js'
 
