@@ -15,13 +15,15 @@ interface TransactionAttributes {
   userId: string
 }
 
-export class Transaction extends Model<TransactionAttributes, Optional<TransactionAttributes, 'id'>> implements TransactionAttributes {
-  public id!: string
-  public type!: keyof typeof TransactionType
-  public symbol!: string
-  public quantity!: number
-  public price!: number
-  public userId!: string
+type TransactionCreationAttributes = Optional<TransactionAttributes, 'id'>
+
+export class Transaction extends Model<TransactionAttributes, TransactionCreationAttributes> {
+  declare id: string
+  declare type: keyof typeof TransactionType
+  declare symbol: string
+  declare quantity: number
+  declare price: number
+  declare userId: string
 }
 
 export const defineTransactionModel = (sequelize: Sequelize) => {

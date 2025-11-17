@@ -7,16 +7,15 @@ interface UserAttributes {
   password: string
 }
 
-interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
+type UserCreationAttributes = Optional<UserAttributes, 'id'>
 
-export class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
-  public id!: string
-  public email!: string
-  public password!: string
-  public age!: number
-
-  public readonly createdAt!: Date
-  public readonly updatedAt!: Date
+export class User extends Model<UserAttributes, UserCreationAttributes> {
+  declare id: string
+  declare email: string
+  declare password: string
+  declare age: number
+  declare createdAt: Date
+  declare updatedAt: Date
 }
 
 export const defineUserModel = (sequelize: Sequelize) => {
