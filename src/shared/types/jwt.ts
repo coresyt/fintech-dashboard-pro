@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const JwtSchema = z.strictObject({
+export const JwtSchema = z.object({
   id: z.uuidv4("Invalid user id format"),
   password: z.string().min(1, "Password is required")
 })
