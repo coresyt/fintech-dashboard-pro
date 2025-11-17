@@ -10,13 +10,15 @@ interface AssetAttributes {
   userId: string
 }
 
-export class Asset extends Model<AssetAttributes, Optional<AssetAttributes, 'id'>> implements AssetAttributes {
-  public id!: string
-  public symbol!: string
-  public name!: string
-  public quantity!: number
-  public purchasePrice!: number
-  public userId!: string
+type AssetCreationAttributes = Optional<AssetAttributes, 'id'>
+
+export class Asset extends Model<AssetAttributes, AssetCreationAttributes> {
+  declare id: string
+  declare symbol: string
+  declare name: string
+  declare quantity: number
+  declare purchasePrice: number
+  declare userId: string
 }
 
 export const defineAssetModel = (sequelize: Sequelize) => {
